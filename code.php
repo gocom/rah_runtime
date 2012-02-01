@@ -1,7 +1,7 @@
 <?php	##################
 	#
 	#	rah_runtime-plugin for Textpattern
-	#	version 0.1
+	#	version 0.2
 	#	by Jukka Svahn
 	#	http://rahforum.biz
 	#
@@ -20,14 +20,14 @@
 		),$atts));
 
 		if(!isset($rah_runtime[$index]) or empty($rah_runtime[$index])) {
-			$rah_runtime[$index] = microtime();
+			$rah_runtime[$index] = getmicrotime();
 			return;
 		}
 
 		if($format == 1)
-			$time = rtrim(number_format(microtime() - $rah_runtime[$index],15,'.',''),0);
+			$time = rtrim(number_format(getmicrotime() - $rah_runtime[$index],15,'.',''),0);
 		else
-			$time = microtime() - $rah_runtime[$index];
+			$time = getmicrotime() - $rah_runtime[$index];
 
 		$rah_runtime[$index] = '';
 		unset($GLOBALS['rah_runtime'][$index]);

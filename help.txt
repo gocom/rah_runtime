@@ -1,9 +1,9 @@
 h1. rah_runtime
 
-p. Rah_runtime returns runtime in microseconds between point A and B.
+p. Rah_runtime returns runtime from point A to B in microseconds. The plugin can be used to diagnose runtimes of specific blocks of TXP's markup code.
 
-* Version: 0.1
-* Updated: 2010/06/15 1:00 PM UTC
+* Version: 0.2
+* Updated: 2010/06/18 1:00 AM UTC
 
 h3. Table of Contents
 
@@ -19,9 +19,15 @@ h3(#requirements). Requirements
 
 h3(#installation-and-usage). Installation and usage
 
-p. The general behavior stands: paste plugin code to the plugin installer textarea and run the automatic setup. Then just activate the plugin and you are ready to use new tags that plugin includes like others.
+p. The general behavior stands:
 
-p. To use the plugin call it's tag, @<rah_function />@, suplying the function you want to call with it and attributes. The tag also be used as a container tag. If used as a container, contained code is used as the first attribute for the function.
+# Go to your Textpattern installation's admin panel.
+# Navigate to Admin / Plugins.
+# Download and open the plugin code.
+# Copy the plugin code to the install plugin box.
+# Click install and go thru the automated installation process.
+# After installation find the plugin from the plugin list and click Activate.
+# Now the plugin is installed and ready to be used.
 
 h3(#attributes). Attributes
 
@@ -41,7 +47,7 @@ p. *Simple usage:*
 
 bc. <txp:rah_runtime />
 	<!--
-		Something (code) here, for example:
+		Some code here, for example:
 		<txp:article />
 	-->
 Runtime: <txp:rah_runtime />
@@ -51,13 +57,17 @@ p. Returns: @[...] Runtime: 0.000011@
 p. *Using multiple nested tag pairs:*
 
 bc. <txp:rah_runtime index="2" />
-	<txp:rah_runtime index="1" />
-	Time1: <txp:rah_runtime index="1" />
+<txp:rah_runtime index="1" />
+Time1: <txp:rah_runtime index="1" />
 Time2: <txp:rah_runtime index="2" />
 
 p. Returns: @Time1: 0.000081 Time2: 0.000184@
 
 h3(#changelog). Changelog
+
+p. *Version 0.2*
+
+* Fixed: now returns as float (compatible with pre-PHP5). "Thank you for reporting, Andreas":http://forum.textpattern.com/viewtopic.php?pid=230410#p230410.
 
 p. *Version 0.1*
 
