@@ -1,15 +1,17 @@
-<?php	##################
-	#
-	#	rah_runtime-plugin for Textpattern
-	#	version 0.3
-	#	by Jukka Svahn
-	#	http://rahforum.biz
-	#
-	#	Copyright (C) 2010 Jukka Svahn
-	#	Licensed under GNU Genral Public License version 2
-	#	http://www.gnu.org/licenses/gpl-2.0.html
-	#
-	###################
+<?php
+
+/**
+ * Rah_runtime plugin for Textpattern CMS
+ *
+ * @author Jukka Svahn
+ * @date 2010-
+ * @license GNU GPLv2
+ * @link http://rahforum.biz/plugins/rah_runtime
+ *
+ * Copyright (C) 2012 Jukka Svahn <http://rahforum.biz>
+ * Licensed under GNU Genral Public License version 2
+ * http://www.gnu.org/licenses/gpl-2.0.html
+ */
 
 	function rah_runtime($atts) {
 		static $runtime = array();
