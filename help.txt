@@ -1,9 +1,9 @@
 h1. rah_runtime
 
-p. Rah_runtime returns runtime from point A to B in microseconds. The plugin can be used to diagnose runtimes of specific blocks of TXP's markup code.
+p. Rah_runtime returns runtimes from point A to B in microseconds. The plugin can be used to diagnose runtimes of specific blocks of Textpattern's markup code.
 
-* Version: 0.2
-* Updated: 2010/06/18 1:00 AM UTC
+* Version: 0.3
+* Updated: 2011/08/19 5:30 PM UTC
 
 h3. Table of Contents
 
@@ -34,12 +34,16 @@ h3(#attributes). Attributes
 p. The tag is @<txp:rah_runtime />@ and attributes for it follow.
 
 p. *index*
-With this attribute you can nest several tag pairs and count several independed runtimes.
+With this attribute you can nest several tag pairs and count several independent runtimes.
 Example: @index="1"@ Default: @"0"@
 
 p. *format*
 Return formated version of the time. Will make the time respect power of ten, and SI units smaller than microsends won't be returned, just microsends with decimals. By default, used (@1@).
 Example: @format="0"@ Default: @"1"@
+
+p. *persistent*
+If set to @1@, the runtime is kept alive after outputting the time. Normally the runtime pair is destroyed after using it, but with @persistent@ the initial runtime is still usable. The attribute is useful, if you want to calculate multiple runtimes from same single starting point.
+Example: @persistent="1"@ Default: @"0"@
 
 h3(#example). Examples
 
@@ -63,7 +67,46 @@ Time2: <txp:rah_runtime index="2" />
 
 p. Returns: @Time1: 0.000081 Time2: 0.000184@
 
+p. *Using persistent runtimes:*
+
+bc. <!--
+	Start the runtime timer
+-->
+<txp:rah_runtime persistent="1" />
+	<!--
+		Some code here, for example:
+		<txp:article />
+	-->
+<!--
+	Output runtime
+-->
+<txp:rah_runtime persistent="1" />
+	<!--
+		Some more code here, for example:
+		<txp:article />
+	-->
+<!--
+	Output runtime, calculated
+	from the same original starting point
+-->
+<txp:rah_runtime persistent="1" />
+	<!--
+		Even some more code.
+	-->
+<!--
+	Destroy and output the final runtime,
+	calculated from the same original starting point
+-->
+<txp:rah_runtime />
+
+p. Note that every one of the tags has @persistent@ attribute. If the tag doesn't have it, then the runtime pair is destroyed after outputting it. To finally destroy the runtime, set persistent to @"0"@ (zero) or remove the attribute.
+
 h3(#changelog). Changelog
+
+p. *Version 0.3*
+
+* Added: a new attribute @persistent@. Disables destroying of used runtime pairs.
+* Changed: Now stores the runtimes in a static variable instead of a global.
 
 p. *Version 0.2*
 

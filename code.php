@@ -1,7 +1,7 @@
 <?php	##################
 	#
 	#	rah_runtime-plugin for Textpattern
-	#	version 0.2
+	#	version 0.3
 	#	by Jukka Svahn
 	#	http://rahforum.biz
 	#
@@ -12,25 +12,26 @@
 	###################
 
 	function rah_runtime($atts) {
-		global $rah_runtime;
+		static $runtime = array();
 
 		extract(lAtts(array(
 			'format' => 1,
-			'index' => 0
+			'index' => 0,
+			'persistent' => 0
 		),$atts));
 
-		if(!isset($rah_runtime[$index]) or empty($rah_runtime[$index])) {
-			$rah_runtime[$index] = getmicrotime();
+		if(!isset($runtime[$index])) {
+			$runtime[$index] = getmicrotime();
 			return;
 		}
 
-		if($format == 1)
-			$time = rtrim(number_format(getmicrotime() - $rah_runtime[$index],15,'.',''),0);
-		else
-			$time = getmicrotime() - $rah_runtime[$index];
+		$time = getmicrotime() - $runtime[$index];
 
-		$rah_runtime[$index] = '';
-		unset($GLOBALS['rah_runtime'][$index]);
+		if($format == 1)
+			$time = rtrim(number_format($time,15,'.',''),0);
+
+		if($persistent != 1)
+			unset($runtime[$index]);
 
 		return $time;
 	}
