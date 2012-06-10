@@ -96,6 +96,11 @@ p. Note that every one of the rah_runtime tags (except for the last) has @persis
 
 h2. Changelog
 
+h3. Version 0.4 - upcoming
+
+* Added: now the runtimes are added to the tag trace.
+* Added: container tag mode support.
+
 h3. Version 0.3 - 2011/08/19
 
 * Added: a new attribute @persistent@. Disables destroying of used runtime pairs.
