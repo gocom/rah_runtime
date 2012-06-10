@@ -29,7 +29,7 @@
 
 		$time = getmicrotime() - $runtime[$index];
 
-		if($format == 1) {
+		if($format) {
 			$time = rtrim(number_format($time, 15, '.', ''), 0);
 		}
 
