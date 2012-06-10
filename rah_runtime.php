@@ -13,32 +13,42 @@
  * http://www.gnu.org/licenses/gpl-2.0.html
  */
 
-	function rah_runtime($atts) {
+	function rah_runtime($atts, $thing=NULL) {
 		static $runtime = array();
 
 		extract(lAtts(array(
 			'format' => 1,
 			'index' => 0,
-			'persistent' => 0
+			'persistent' => 0,
 		), $atts));
-
-		if(!isset($runtime[$index])) {
-			$runtime[$index] = getmicrotime();
-			return;
+		
+		if($thing !== NULL) {
+			$time = getmicrotime();
+			$thing = parse($thing);
+		}
+		
+		else {
+			
+			if(!isset($runtime[$index])) {
+				$runtime[$index] = getmicrotime();
+				return;
+			}
+			
+			$time = $runtime[$index];
+			
+			if(!$persistent) {
+				unset($runtime[$index]);
+			}
 		}
 
-		$time = getmicrotime() - $runtime[$index];
+		$time = getmicrotime() - $time;
 
 		if($format) {
 			$time = rtrim(number_format($time, 15, '.', ''), 0);
 		}
-
-		if(!$persistent) {
-			unset($runtime[$index]);
-		}
 		
 		trace_add('[rah_runtime ('.$index.'): '.$time.']');
 		
-		return $time;
+		return $thing !== NULL ? $thing : $time;
 	}
 ?>
