@@ -36,7 +36,9 @@
 		if(!$persistent) {
 			unset($runtime[$index]);
 		}
-
+		
+		trace_add('[rah_runtime ('.$index.'): '.$time.']');
+		
 		return $time;
 	}
 ?>
