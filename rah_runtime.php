@@ -20,7 +20,7 @@
 			'format' => 1,
 			'index' => 0,
 			'persistent' => 0
-		),$atts));
+		), $atts));
 
 		if(!isset($runtime[$index])) {
 			$runtime[$index] = getmicrotime();
@@ -29,11 +29,13 @@
 
 		$time = getmicrotime() - $runtime[$index];
 
-		if($format == 1)
-			$time = rtrim(number_format($time,15,'.',''),0);
+		if($format == 1) {
+			$time = rtrim(number_format($time, 15, '.', ''), 0);
+		}
 
-		if($persistent != 1)
+		if(!$persistent) {
 			unset($runtime[$index]);
+		}
 
 		return $time;
 	}
