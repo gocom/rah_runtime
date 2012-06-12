@@ -20,6 +20,7 @@
 			'format' => 1,
 			'index' => 0,
 			'persistent' => 0,
+			'return' => 0,
 		), $atts));
 		
 		if($thing !== NULL) {
@@ -49,6 +50,8 @@
 		
 		trace_add('[rah_runtime ('.$index.'): '.$time.']');
 		
-		return $thing !== NULL ? $thing : $time;
+		return 
+			($thing !== NULL ? $thing : '').
+			($return ? $time : '');
 	}
 ?>
