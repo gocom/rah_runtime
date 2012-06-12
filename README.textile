@@ -18,9 +18,17 @@ p. The general behavior stands:
 # After installation find the plugin from the plugin list and click Activate.
 # Now the plugin is installed and ready to be used.
 
-h2. Attributes
+h2. Tag and attributes
 
-p. The tag is @<txp:rah_runtime />@ and attributes for it follow.
+bc. <txp:rah_runtime format="1" index="0" />
+
+p. The plugin introduces a new Textpattern tag, @<txp:rah_runtime />@. The tag calculates a execution runtime for given template markup from point A to point B. The runtimes can be printed to the page template and are added to a page's "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace.
+
+p. The rah_runtime tag can be used both as a container and as a self-closing single tag. When the tag is used as a container, it calculates the runtime of the wrapped code, ignoring tag attributes as index and persistent. When used as a self-closing single tag, calculates a runtime from the first tag instance to the second.
+
+p. *return*
+If set to @1@, the tag outputs the runtime to the page template. If @0@ the runtime is only added and visible in the page's "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace when the site is in debugging mode. By default @return@ is @0@, and the runtimes are only added to the tag trace.
+Example: @return="1"@ Default: @"0"@
 
 p. *index*
 With this attribute you can nest several tag pairs and count several independent runtimes.
@@ -36,14 +44,24 @@ Example: @persistent="1"@ Default: @"0"@
 
 h2. Examples
 
-h3. Simple usage example
+h3. Using as a container
+
+bc. <txp:rah_runtime>
+	<txp:article_custom />
+</txp:rah_runtime>
+
+p. It will return the wrapped markup's results, as it would without the rah_runtime, and the runtime for the wrapped code is added to the tag trace. The page's tag trace should display a line similar to this:
+
+bc. [rah_runtime (0): 0.000010013580322]
+
+h3. Using as a single tag
 
 bc. <txp:rah_runtime />
 	<!--
 		Some code here, for example:
 		<txp:article />
 	-->
-Runtime: <txp:rah_runtime />
+Runtime: <txp:rah_runtime return="1" />
 
 p. Returns: @[...] Runtime: 0.000011@
 
@@ -98,8 +116,10 @@ h2. Changelog
 
 h3. Version 0.4 - upcoming
 
-* Added: now the runtimes are added to the tag trace.
-* Added: container tag mode support.
+* Added: @return@ attribute.
+* Added: Now the runtimes are added to the tag trace.
+* Added: Container tag mode support.
+* Changed: By default runtimes are only visible in a tag trace. Set @return@ attribute to @1@ (@return="1"@) output runtimes to the page template.
 
 h3. Version 0.3 - 2011/08/19
 
