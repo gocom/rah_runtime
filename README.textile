@@ -38,7 +38,7 @@ Example: @format="0"@ Default: @"1"@
 
 p. *index*
 With this attribute you can nest several tag pairs and count several independent runtimes. The @index@ attribute only applies when @<txp:rah_runtime />@ is used as a self-closing single tag.
-Example: @index="1"@ Default: @"0"@
+Example: @index="articles"@ Default: @"default"@
 
 p. *persistent*
 If set to @1@, the runtime is kept alive after returning. Normally the runtime pair is destroyed after using it, but with @persistent@ the initial runtime is kept and still usable. The attribute is useful if you want to calculate multiple runtimes from same single starting point. The @persistent@ attribute only applies when @<txp:rah_runtime />@ is used as a self-closing single tag.
@@ -56,7 +56,7 @@ bc. <txp:rah_runtime>
 
 p. Above snippet will return the contained statement's results, as it would normally without the rah_runtime, and the runtime of the contained statement is added to the page's "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace. The tag trace should display a line similar to this:
 
-bc. [rah_runtime (0): 0.000010013580322]
+bc. [rah_runtime (default): 0.000010013580322]
 
 h3. Using as a single tag
 
@@ -71,7 +71,7 @@ bc. <txp:rah_runtime />
 
 p. Above will return all the markup normally, like there weren't any traces of rah_runtime, and the runtime is added to the page's tag trace as a line similar to this:
 
-bc. [rah_runtime (0): 0.000010013580322]
+bc. [rah_runtime (default): 0.000010013580322]
 
 h3. Returning runtimes to the page
 
@@ -146,6 +146,7 @@ h3. Version 0.4 - upcoming
 * Added: Now the runtimes are added to the tag trace.
 * Added: Container tag mode support.
 * Changed: By default runtimes are only visible in a tag trace. Set @return@ attribute to @1@ (@return="1"@) output runtimes to the page template.
+* Changed: Default @index@ to @default@. This is to avoid potential type juggling side-effects.
 
 h3. Version 0.3 - 2011/08/19
 

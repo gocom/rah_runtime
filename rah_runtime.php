@@ -18,7 +18,7 @@
 
 		extract(lAtts(array(
 			'format' => 1,
-			'index' => 0,
+			'index' => 'default',
 			'persistent' => 0,
 			'return' => 0,
 		), $atts));
