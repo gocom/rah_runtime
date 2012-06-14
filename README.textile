@@ -54,7 +54,7 @@ bc. <txp:rah_runtime>
 	<txp:article_custom />
 </txp:rah_runtime>
 
-p. It will return the wrapped markup's results, as it would without the rah_runtime, and the runtime for the wrapped code is added to the tag trace. The page's tag trace should display a line similar to this:
+p. Above snippet will return the contained statement's results, as it would normally without the rah_runtime, and the runtime of the contained statement is added to the page's "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace. The tag trace should display a line similar to this:
 
 bc. [rah_runtime (0): 0.000010013580322]
 
@@ -75,7 +75,7 @@ bc. [rah_runtime (0): 0.000010013580322]
 
 h3. Returning runtimes to the page
 
-p. Normally the resulting runtimes are added to the "tag trace":":http://textpattern.net/wiki/index.php?title=Tag_trace and are not visible in the normal page content. That is unless, @return@ attribute is set to @1@.
+p. Normally the resulting runtimes are added to the "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace and are not visible in the normal page content. That is unless, @return@ attribute is set to @1@.
 
 bc. <txp:rah_runtime />
 Runtime: <txp:rah_runtime return="1" />
