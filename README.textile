@@ -20,7 +20,9 @@ p. The general behavior stands:
 
 h2. Tag and attributes
 
-bc. <txp:rah_runtime format="1" index="0" />
+bc. <txp:rah_runtime format="1">
+	...contained statements...
+</txp:rah_runtime>
 
 p. The plugin introduces a new Textpattern tag, @<txp:rah_runtime />@. The tag calculates a execution runtime for given template markup from point A to point B. The runtimes can be printed to the page template and are added to a page's "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace.
 
@@ -30,16 +32,16 @@ p. *return*
 If set to @1@, the tag outputs the runtime to the page template. If @0@ the runtime is only added and visible in the page's "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace when the site is in debugging mode. By default @return@ is @0@, and the runtimes are only added to the tag trace.
 Example: @return="1"@ Default: @"0"@
 
-p. *index*
-With this attribute you can nest several tag pairs and count several independent runtimes.
-Example: @index="1"@ Default: @"0"@
-
 p. *format*
 Return formatted version of the time. When used, resulting value (float) is presented as a fixed decimal number. By default the option is used (@1@).
 Example: @format="0"@ Default: @"1"@
 
+p. *index*
+With this attribute you can nest several tag pairs and count several independent runtimes. The @index@ attribute only applies when @<txp:rah_runtime />@ is used as a self-closing single tag.
+Example: @index="1"@ Default: @"0"@
+
 p. *persistent*
-If set to @1@, the runtime is kept alive after returning. Normally the runtime pair is destroyed after using it, but with @persistent@ the initial runtime is kept and still usable. The attribute is useful if you want to calculate multiple runtimes from same single starting point.
+If set to @1@, the runtime is kept alive after returning. Normally the runtime pair is destroyed after using it, but with @persistent@ the initial runtime is kept and still usable. The attribute is useful if you want to calculate multiple runtimes from same single starting point. The @persistent@ attribute only applies when @<txp:rah_runtime />@ is used as a self-closing single tag.
 Example: @persistent="1"@ Default: @"0"@
 
 h2. Examples
