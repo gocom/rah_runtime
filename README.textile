@@ -2,25 +2,19 @@ h1. rah_runtime
 
 p. Rah_runtime returns runtimes from point A to B in microseconds. The plugin can be used to diagnose runtimes of specific blocks of Textpattern's markup code.
 
-h2. Installing
-
-p. The general behavior stands when it comes to installing rah_runtime. No extra steps or configuration that variates from normal is needed.
-
-# Download plugin installation file and copy its contents to clipboard.
-# Navigate to "Plugins":http://textpattern.net/wiki/index.php?title=Plugins panel and paste the copied code into the _Install plugin_ field, and click *Upload*.
-# You will be shown a preview of the plugin and its documentation. Click *Install* at the bottom of the page.
-# You will be returned to the plugin list when the plugin has been installed. Now activate the plugin by clicking its *No* link, which toggles the status to *Yes* and actives it.
-# The plugin is now installed and activated. All done.
-
-h2. Tag and attributes
+h2. Basics
 
 bc. <txp:rah_runtime format="1">
 	...contained statements...
 </txp:rah_runtime>
 
-p. The plugin introduces a new Textpattern tag, @<txp:rah_runtime />@. The tag calculates a execution runtime for given template markup from point A to point B. The runtimes can be printed to the page template and are added to a page's "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace.
+p. The plugin introduces a new Textpattern tag, @<txp:rah_runtime />@. The tag calculates execution runtimes for Textpattern template markup. The runtimes can be printed to the page template and are added to a "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace.
 
-p. The rah_runtime tag can be used both as a container and as a self-closing single tag. When the tag is used as a container, it calculates the runtime of the wrapped code, ignoring tag attributes as index and persistent. When used as a self-closing single tag, calculates a runtime from the first tag instance to the second.
+p. The rah_runtime tag can be used both as a container and as a self-closing single tag. When the tag is used as a container, it calculates a runtime of the wrapped code. When used as a self-closing single tag, it calculates a runtime from the first tag instance to the second.
+
+h2. Attributes
+
+p. @<txp:rah_runtime/>@ tag's attributes are as follows.
 
 p. *return*
 If set to @1@, the tag outputs the runtime to the page template. If @0@ the runtime is only added and visible in the page's "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace when the site is in debugging mode. By default @return@ is @0@, and the runtimes are only added to the tag trace.
