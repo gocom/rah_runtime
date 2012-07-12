@@ -128,7 +128,7 @@ p. Note that every one of the rah_runtime tags (except for the last) has @persis
 
 h2. Changelog
 
-h3. Version 0.4 - upcoming
+h3. Version 0.4 - 2012/07/12
 
 * Added: @return@ attribute.
 * Added: Now the runtimes are added to the tag trace.
