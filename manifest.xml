@@ -1,10 +1,10 @@
 <manifest>
 
 	<name>rah_runtime</name>
-	<description>A-to-B runtime</description>
+	<description>Diagnose execution times</description>
 	
 	<version>0.3</version>
-	<type public="0" pub-admin="1" library="2" admin-only="3">0</type>
+	<type>0</type>
 	
 	<author>Jukka Svahn</author>
 	<author_uri>http://rahforum.biz</author_uri>
