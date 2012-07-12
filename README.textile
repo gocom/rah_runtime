@@ -2,21 +2,15 @@ h1. rah_runtime
 
 p. Rah_runtime returns runtimes from point A to B in microseconds. The plugin can be used to diagnose runtimes of specific blocks of Textpattern's markup code.
 
-h2. Requirements
+h2. Installing
 
-* Textpattern 4.x.x+
+p. The general behavior stands when it comes to installing rah_runtime. No extra steps or configuration that variates from normal is needed.
 
-h2. Installation and usage
-
-p. The general behavior stands:
-
-# Go to your Textpattern installation's admin panel.
-# Navigate to Admin / Plugins.
-# Download and open the plugin code.
-# Copy the plugin code to the install plugin box.
-# Click install and go thru the automated installation process.
-# After installation find the plugin from the plugin list and click Activate.
-# Now the plugin is installed and ready to be used.
+# Download plugin installation file and copy its contents to clipboard.
+# Navigate to "Plugins":http://textpattern.net/wiki/index.php?title=Plugins panel and paste the copied code into the _Install plugin_ field, and click *Upload*.
+# You will be shown a preview of the plugin and its documentation. Click *Install* at the bottom of the page.
+# You will be returned to the plugin list when the plugin has been installed. Now activate the plugin by clicking its *No* link, which toggles the status to *Yes* and actives it.
+# The plugin is now installed and activated. All done.
 
 h2. Tag and attributes
 
@@ -48,7 +42,7 @@ h2. Examples
 
 h3. Using as a container
 
-p. As a container, @rah_runtime@ gets the runtime for the wrapped content.
+p. As a container, @rah_runtime@ calculates a runtime for the wrapped content.
 
 bc. <txp:rah_runtime>
 	<txp:article_custom />
@@ -75,7 +69,7 @@ bc. [rah_runtime (default): 0.000010013580322]
 
 h3. Returning runtimes to the page
 
-p. Normally the resulting runtimes are added to the "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace and are not visible in the normal page content. That is unless, @return@ attribute is set to @1@.
+p. Normally the resulting runtimes are added to the "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace and are not visible in the normal page content. That is unless @return@ attribute is set to @1@.
 
 bc. <txp:rah_runtime />
 Runtime: <txp:rah_runtime return="1" />
