@@ -42,7 +42,7 @@ bc. <txp:rah_runtime>
 	<txp:article_custom />
 </txp:rah_runtime>
 
-p. Above snippet will return the contained statement's results, as it would normally without the rah_runtime, and the runtime of the contained statement is added to the page's "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace. The tag trace should display a line similar to this:
+p. The above will return the contained statement's results, as it would normally without the rah_runtime, and the runtime of the contained statement is added to the page's "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace. The tag trace should display a line similar to this:
 
 bc. [rah_runtime (default): 0.000010013580322]
 
@@ -57,7 +57,7 @@ bc. <txp:rah_runtime />
 	-->
 <txp:rah_runtime />
 
-p. Above will return all the markup normally, like there weren't any traces of rah_runtime, and the runtime is added to the page's tag trace as a line similar to this:
+p. The above will return all the markup normally, like there weren't any traces of rah_runtime, and the runtime is added to the page's tag trace as a line similar to this:
 
 bc. [rah_runtime (default): 0.000010013580322]
 
@@ -127,6 +127,10 @@ bc.. <!--
 p. Note that every one of the rah_runtime tags (except for the last) has @persistent@ attribute set to @1@. If the tag doesn't have it, then the runtime pair is destroyed after returning it. To finally destroy the runtime, set persistent to @"0"@ (zero) or leave it undefined.
 
 h2. Changelog
+
+h3. Version 0.5 - upcoming
+
+* Updated: Help file.
 
 h3. Version 0.4 - 2012/07/12
 
