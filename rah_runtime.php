@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Rah_runtime plugin for Textpattern CMS
+ * Rah_runtime plugin for Textpattern CMS.
  *
- * @author Jukka Svahn
+ * @author  Jukka Svahn
  * @license GNU GPLv2
- * @link http://rahforum.biz/plugins/rah_runtime
+ * @link    http://rahforum.biz/plugins/rah_runtime
  *
  * Copyright (C) 2012 Jukka Svahn http://rahforum.biz
  * Licensed under GNU General Public License version 2
