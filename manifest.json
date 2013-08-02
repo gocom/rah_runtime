@@ -1,0 +1,11 @@
+{
+    "name": "rah_runtime",
+    "description": "Diagnose execution times",
+    "version": "0.4",
+    "type": 0,
+    "author": "Jukka Svahn",
+    "author_uri": "http://rahforum.biz",
+    "order": 5,
+    "flags": 0,
+    "help": {"file": ["./README.textile"]}
+}
