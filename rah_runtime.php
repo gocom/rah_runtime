@@ -57,7 +57,7 @@ function rah_runtime($atts, $thing = null)
 
     if ($return)
     {
-        $out .= $time
+        $out .= $time;
     }
 
     return $out;
