@@ -130,7 +130,7 @@ p. Note that every one of the rah_runtime tags (except for the last) has @persis
 
 h2. Changelog
 
-h3. Version 0.5 - upcoming
+h3. Version 0.5.0 - upcoming
 
 * Updated: Help file.
 
