@@ -1,6 +1,6 @@
 h1. rah_runtime
 
-"Homepage":http://rahforum.biz/plugins/rah_runtime | "Packagist":https://packagist.org/packages/rah/rah_runtime | "Twitter":https://twitter.com/gocom | "Support forum":http://forum.textpattern.com/viewtopic.php?id=33914 | "Donate":http://rahforum.biz/donate/rah_runtime
+"Homepage":http://rahforum.biz/plugins/rah_runtime | "Packagist":https://packagist.org/packages/rah/rah_runtime | "Twitter":https://twitter.com/gocom | "GitHub":https://github.com/gocom/rah_runtime | "Support forum":http://forum.textpattern.com/viewtopic.php?id=33914 | "Donate":http://rahforum.biz/donate/rah_runtime
 
 Rah_runtime returns runtimes from point A to B in microseconds. The plugin can be used to diagnose runtimes of specific blocks of Textpattern's markup code.
 
