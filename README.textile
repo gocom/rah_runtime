@@ -1,34 +1,34 @@
 h1. rah_runtime
 
-p. Rah_runtime returns runtimes from point A to B in microseconds. The plugin can be used to diagnose runtimes of specific blocks of Textpattern's markup code.
+Rah_runtime returns runtimes from point A to B in microseconds. The plugin can be used to diagnose runtimes of specific blocks of Textpattern's markup code.
 
 h2. Basics
 
 bc. <txp:rah_runtime format="1">
-	...contained statements...
+    ...contained statements...
 </txp:rah_runtime>
 
-p. The plugin introduces a new Textpattern tag, @<txp:rah_runtime />@. The tag calculates execution runtimes for Textpattern template markup. The runtimes can be printed to the page template and are added to a "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace.
+The plugin introduces a new Textpattern tag, @<txp:rah_runtime />@. The tag calculates execution runtimes for Textpattern template markuThe runtimes can be printed to the page template and are added to a "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace.
 
-p. The rah_runtime tag can be used both as a container and as a self-closing single tag. When the tag is used as a container, it calculates a runtime of the wrapped code. When used as a self-closing single tag, it calculates a runtime from the first tag instance to the second.
+The rah_runtime tag can be used both as a container and as a self-closing single tag. When the tag is used as a container, it calculates a runtime of the wrapped code. When used as a self-closing single tag, it calculates a runtime from the first tag instance to the second.
 
 h2. Attributes
 
-p. @<txp:rah_runtime/>@ tag's attributes are as follows.
+@<txp:rah_runtime/>@ tag's attributes are as follows.
 
-p. *return*
+*return*
 If set to @1@, the tag outputs the runtime to the page template. If @0@ the runtime is only added and visible in the page's "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace when the site is in debugging mode. By default @return@ is @0@, and the runtimes are only added to the tag trace.
 Example: @return="1"@ Default: @"0"@
 
-p. *format*
+*format*
 Return formatted version of the time. When used, resulting value (float) is presented as a fixed decimal number. By default the option is used (@1@).
 Example: @format="0"@ Default: @"1"@
 
-p. *index*
+*index*
 With this attribute you can nest several tag pairs and count several independent runtimes. The @index@ attribute only applies when @<txp:rah_runtime />@ is used as a self-closing single tag.
 Example: @index="articles"@ Default: @"default"@
 
-p. *persistent*
+*persistent*
 If set to @1@, the runtime is kept alive after returning. Normally the runtime pair is destroyed after using it, but with @persistent@ the initial runtime is kept and still usable. The attribute is useful if you want to calculate multiple runtimes from same single starting point. The @persistent@ attribute only applies when @<txp:rah_runtime />@ is used as a self-closing single tag.
 Example: @persistent="1"@ Default: @"0"@
 
@@ -36,90 +36,90 @@ h2. Examples
 
 h3. Using as a container
 
-p. As a container, @rah_runtime@ calculates a runtime for the wrapped content.
+As a container, @rah_runtime@ calculates a runtime for the wrapped content.
 
 bc. <txp:rah_runtime>
-	<txp:article_custom />
+    <txp:article_custom />
 </txp:rah_runtime>
 
-p. The above will return the contained statement's results, as it would normally without the rah_runtime, and the runtime of the contained statement is added to the page's "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace. The tag trace should display a line similar to this:
+The above will return the contained statement's results, as it would normally without the rah_runtime, and the runtime of the contained statement is added to the page's "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace. The tag trace should display a line similar to this:
 
 bc. [rah_runtime (default): 0.000010013580322]
 
 h3. Using as a single tag
 
-p. When the rah_runtime tag is used as a single, self-closing tag, the runtime is calculated from a @<txp:rah_runtime/>@ tag instance to the next. Essentially the runtime is for the markup and code between two @<txp:rah_runtime/>@ tags.
+When the rah_runtime tag is used as a single, self-closing tag, the runtime is calculated from a @<txp:rah_runtime/>@ tag instance to the next. Essentially the runtime is for the markup and code between two @<txp:rah_runtime/>@ tags.
 
 bc. <txp:rah_runtime />
-	<!--
-		Some code here, for example:
-		<txp:article />
-	-->
+    <!--
+        Some code here, for example:
+        <txp:article />
+    -->
 <txp:rah_runtime />
 
-p. The above will return all the markup normally, like there weren't any traces of rah_runtime, and the runtime is added to the page's tag trace as a line similar to this:
+The above will return all the markup normally, like there weren't any traces of rah_runtime, and the runtime is added to the page's tag trace as a line similar to this:
 
 bc. [rah_runtime (default): 0.000010013580322]
 
 h3. Returning runtimes to the page
 
-p. Normally the resulting runtimes are added to the "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace and are not visible in the normal page content. That is unless @return@ attribute is set to @1@.
+Normally the resulting runtimes are added to the "tag trace":http://textpattern.net/wiki/index.php?title=Tag_trace and are not visible in the normal page content. That is unless @return@ attribute is set to @1@.
 
 bc. <txp:rah_runtime />
 Runtime: <txp:rah_runtime return="1" />
 
-p. The runtime is added to the tag trace and the above will return:
+The runtime is added to the tag trace and the above will return:
 
 bc. Runtime: 0.00021401458032
 
 h3. Using multiple nested tag pairs
 
-p. The rah_runtime tag's @index@ attribute can be used to nest and mix multiple @<txp:rah_runtime/>@ tags and runtime pairs together. This will allow calculating simultaneous runtimes that overlap each others.
+The rah_runtime tag's @index@ attribute can be used to nest and mix multiple @<txp:rah_runtime/>@ tags and runtime pairs together. This will allow calculating simultaneous runtimes that overlap each others.
 
 bc. <txp:rah_runtime index="2" />
 <txp:rah_runtime index="1" />
 Time1: <txp:rah_runtime index="1" return="1" />
 Time2: <txp:rah_runtime index="2" return="1" />
 
-p. The above will return two runtimes:
+The above will return two runtimes:
 
 bc. Time1: 0.000081
 Time2: 0.000184
 
-p. The _time2_ contains the runtime of _time1_ and more.
+The _time2_ contains the runtime of _time1_ and more.
 
 h3. Using persistent runtimes
 
-p. Persistent runtimes are useful when several runtimes are to be calculated from a same starting point.
+Persistent runtimes are useful when several runtimes are to be calculated from a same starting point.
 
 bc.. <!--
-	Starting the runtime timer
+    Starting the runtime timer
 -->
 
 <txp:rah_runtime persistent="1" return="1" />
 
 
 <!--
-	Some code here, for example <txp:article /> ...
-	then output a (first) runtime
+    Some code here, for example <txp:article /> ...
+    then output a (first) runtime
 -->
 
 <txp:rah_runtime persistent="1" return="1" />
 
 <!--
-	Some more code here, for example
-	<txp:output_form form="myform" />
+    Some more code here, for example
+    <txp:output_form form="myform" />
 
-	Output runtime, calculated
-	from the same original starting point
+    Output runtime, calculated
+    from the same original starting point
 -->
 
 <txp:rah_runtime persistent="1" return="1" />
 
 <!--
-	Even some more code.
-	Finally, return the final runtime still calculated 
-	from the same original starting point.
+    Even some more code.
+    Finally, return the final runtime still calculated 
+    from the same original starting point.
 -->
 
 <txp:rah_runtime return="1" />
